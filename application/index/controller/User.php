@@ -99,7 +99,6 @@ class User extends Base {
 
         $user = model('User');
         $result = $user->save($data, ['id' =>  $id]);
-        print($result);
         if ($result){
             $result = array(
                 'update_time' => $user['update_time'],
