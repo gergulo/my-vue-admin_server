@@ -26,13 +26,17 @@ class User extends Base {
      */
     public function query(){
         $txt = $this->request->param('txt', '');
+		$status = intval($this->request->param('status', '-1'));
         $current = intval($this->request->param('current', '1'));
         $size = intval($this->request->param('size', '10'));
 
-        $where = function ($query) use ($txt) {
+        $where = function ($query) use ($txt, $status) {
             if (!empty($txt)) {
                 $query->where('user_name|nick_name', 'LIKE', "%{$txt}%");
             }
+			if ($status != -1) {
+				$query->where('status', $status);
+			}
         };
         $data =[];
         $model = model('User');
