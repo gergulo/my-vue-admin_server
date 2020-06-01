@@ -188,7 +188,10 @@ class Base
             //未设置状态码,根据code值判断
             $code = $code >= 1000 || $code < 200 ? 200 : $code;
         }
-        $response = Response::create($result, $type, $code)->header($header);
+		$options = [
+			'json_encode_param' => JSON_UNESCAPED_UNICODE + JSON_NUMERIC_CHECK,
+		];
+        $response = Response::create($result, $type, $code)->header($header)->options($options);
         throw new HttpResponseException($response);
     }
 
