@@ -18,7 +18,7 @@ class Role extends Base {
      * 无需鉴权的方法,但需要登录
      * @var array
      */
-    protected $noNeedRight = ['listAll'];
+    protected $noNeedRight = ['listall'];
 
     /**
      * 查询角色列表
@@ -133,7 +133,7 @@ class Role extends Base {
     /**
      * 获取角色权限
      */
-    public function getRolePerms(){
+    public function getroleperms(){
         $id = $this->request->param('id', '');
         $data = model('Role')
             ->with('permissions')
@@ -175,7 +175,7 @@ class Role extends Base {
     /**
      * 更新角色权限
      */
-    public function updatePerms(){
+    public function updateperms(){
         $role_id = $this->request->param('role_id', '');
         $perm_type = $this->request->param('perm_type', '');
         $perm_values = $this->request->param('perm_values/a', []);
@@ -216,7 +216,7 @@ class Role extends Base {
     /**
      * 添加角色权限
      */
-    public function addPerm(){
+    public function addperm(){
         $data['role_id'] = $this->request->param('role_id', '');
         $data['permission_type'] = $this->request->param('perm_type', '');
         $data['permission_value'] = $this->request->param('perm_value', []);
@@ -233,7 +233,7 @@ class Role extends Base {
     /**
      * 删除角色权限
      */
-    public function deletePerm(){
+    public function deleteperm(){
         $data['role_id'] = $this->request->param('role_id', '');
         $data['permission_type'] = $this->request->param('perm_type', '');
         $data['permission_value'] = $this->request->param('perm_value', []);
@@ -251,7 +251,7 @@ class Role extends Base {
     /**
      * 获取所有角色列表
      */
-    public function listAll() {
+    public function listall() {
         $data = model('Role')
             ->field('id, role_name, role_value')
             ->select();

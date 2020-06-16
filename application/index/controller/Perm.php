@@ -18,14 +18,14 @@ class Perm extends Base {
      * 无需鉴权的方法,但需要登录
      * @var array
      */
-    protected $noNeedRight = ['getBtnPerms', 'getApiPerms', 'listAll'];
+    protected $noNeedRight = ['getbtnperms', 'getapiperms', 'listall'];
 
     protected $apiRoot = 'a:root';
 
     /**
      * 获取按钮权限列表
      */
-    public function getBtnPerms(){
+    public function getbtnperms(){
         $data = model('Permission')
             ->field('parent, permission_name, permission_value, permission_type')
             ->where('permission_type', 2)
@@ -41,7 +41,7 @@ class Perm extends Base {
     /**
      * 获取接口权限列表
      */
-    public function getApiPerms(){
+    public function getapiperms(){
         $data = model('Permission')
             ->field('parent, permission_name, permission_value, permission_type')
             ->where('permission_type', 3)
@@ -57,7 +57,7 @@ class Perm extends Base {
     /**
      * 获取所有权限列表
      */
-    public function listAll(){
+    public function listall(){
         $data = model('Permission')
             ->field('parent, permission_name, permission_value, permission_type')
             ->where('permission_type', 'in', [1, 2, 3])
@@ -77,7 +77,7 @@ class Perm extends Base {
     /**
      * 同步菜单权限列表
      */
-    public function syncMenuPerms(){
+    public function syncmenuperms(){
         $request_data = $this->request->param();
         $list = [];
         $count = count($request_data);
